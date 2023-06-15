@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Infraestructure.Database;
-namespace API.Infraestructure.Module
+using Autofac;
+
+namespace API.Infraestructure.Modules
 {
-    using Autofac;
     public class InfraModule : Module
     {
         protected override void Load(ContainerBuilder builder)

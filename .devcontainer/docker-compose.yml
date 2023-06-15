@@ -4,6 +4,7 @@ services:
   usercontrol:
     environment:
       DBCONN: "Server=db_usercontrol;Port=5432;Database=postgres;User Id=postgres;Password=postgres"
+      USER: "{ Name: 8, Password: 8, Description: true, Image: true, DateOfBirth: true, OnlineStatus: true}"
     build:
       context: .
       dockerfile: Dockerfile

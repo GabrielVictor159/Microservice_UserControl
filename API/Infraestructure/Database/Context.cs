@@ -10,7 +10,7 @@ namespace API.Infraestructure.Database
 {
     public class Context : DbContext
     {
-        public DbSet<User> Users => Set<User>();
+        public DbSet<Users> Users => Set<Users>();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString = Environment.GetEnvironmentVariable("DBCONN");

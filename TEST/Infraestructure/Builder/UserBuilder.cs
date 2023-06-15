@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Enums;
 using API.Infraestructure.Database.Entities;
 using Bogus;
 
@@ -9,22 +10,30 @@ namespace TEST.Infraestructure.Builder
 {
     public class UserBuilder
     {
+        public Guid Id { get; set; }
         public String Name { get; private set; } = "";
         public String Password { get; private set; } = "";
         public String? Description { get; private set; }
         public String? Image { get; private set; }
         public DateTime? DateOfBirth { get; private set; }
         public Boolean? OnlineStatus { get; private set; }
+        public String Role { get; private set; } = "";
 
         public static UserBuilder New(Faker faker)
         {
             return new UserBuilder()
             {
+                Id = Guid.NewGuid(),
                 Name = faker.Name.FullName(),
-                Password = faker.Random.String2(10, 14)
+                Password = faker.Random.String2(10, 14),
+                Role = Roles.ADMIN.ToString()
             };
         }
-
+        public UserBuilder WithId(Guid id)
+        {
+            Id = id;
+            return this;
+        }
         public UserBuilder WithName(String name)
         {
             Name = name;
@@ -61,15 +70,17 @@ namespace TEST.Infraestructure.Builder
             return this;
         }
 
-        public User Build()
-        => new User()
+        public Users Build()
+        => new Users()
         {
+            Id = Id,
             Name = Name,
             Password = Password,
             Description = Description,
             Image = Image,
             DateOfBirth = DateOfBirth,
-            OnlineStatus = OnlineStatus
+            OnlineStatus = OnlineStatus,
+            Role = Role
         };
 
     }
