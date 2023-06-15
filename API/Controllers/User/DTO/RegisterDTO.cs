@@ -10,7 +10,7 @@ namespace API.Controllers.User.DTO
         public String? Name { get; set; }
         public String? Password { get; set; }
         public String? Description { get; set; }
-        public String? Image { get; set; }
+        public Byte[]? Image { get; set; }
         public DateTime? DateOfBirth { get; set; }
     }
 }

@@ -37,6 +37,7 @@ namespace TEST.Services.Test
             userObject = user != null ? JsonConvert.DeserializeObject<UserMap>(user) : null;
             nameLength = userObject?.Name != null ? int.Parse(userObject.Name) : 8;
             passwordLength = userObject?.Password != null ? int.Parse(userObject.Password) : 8;
+            Environment.SetEnvironmentVariable("Secret", Guid.NewGuid().ToString());
         }
         [Fact]
         public async void RegisterUser_Sucess()

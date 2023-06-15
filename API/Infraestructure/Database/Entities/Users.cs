@@ -11,7 +11,8 @@ namespace API.Infraestructure.Database.Entities
         public String Name { get; set; } = "";
         public String Password { get; set; } = "";
         public String? Description { get; set; }
-        public String? Image { get; set; }
+        public String? ImageName { get; set; }
+        public Byte[]? ImageBlob { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public Boolean? OnlineStatus { get; set; }
         public String Role { get; set; } = "";

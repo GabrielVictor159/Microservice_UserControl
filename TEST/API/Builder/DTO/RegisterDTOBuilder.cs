@@ -9,8 +9,11 @@ namespace TEST.API.Builder.DTO
 {
     public class RegisterDTOBuilder
     {
-        public String Name { get; private set; } = "";
-        public String Password { get; private set; } = "";
+        public String? Name { get; set; }
+        public String? Password { get; set; }
+        public String? Description { get; set; }
+        public Byte[]? Image { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public static RegisterDTOBuilder New(Faker faker)
         {
             return new RegisterDTOBuilder()
@@ -24,7 +27,11 @@ namespace TEST.API.Builder.DTO
             Name = name;
             return this;
         }
-
+        public RegisterDTOBuilder WithImage(Byte[] image)
+        {
+            Image = image;
+            return this;
+        }
         public RegisterDTOBuilder WithPassword(string password)
         {
             Password = password;
@@ -32,7 +39,7 @@ namespace TEST.API.Builder.DTO
         }
 
         public RegisterDTO Build()
-        => new RegisterDTO() { Name = Name, Password = Password };
+        => new RegisterDTO() { Name = Name, Image = Image, Password = Password };
 
 
     }

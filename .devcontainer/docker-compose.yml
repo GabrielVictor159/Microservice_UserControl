@@ -6,6 +6,7 @@ services:
       DBCONN: "Server=db_usercontrol;Port=5432;Database=postgres;User Id=postgres;Password=postgres"
       USER: "{ Name: 8, Password: 8, Description: true, Image: true, DateOfBirth: true, OnlineStatus: true}"
       messagesHostname: "rabbitmq"
+      tokenExpires: "8"
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,6 +14,9 @@ services:
     volumes:
       - ../..:/workspaces:cached
     command: sleep infinity
+    depends_on:
+      - db_usercontrol
+      - rabbitmq
     networks:
       - usercontrol
   db_usercontrol:

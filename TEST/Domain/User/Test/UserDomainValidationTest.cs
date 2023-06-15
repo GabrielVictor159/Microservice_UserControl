@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Domain.User;
+using API.Infraestructure.Database.Entities;
 using Bogus;
 using FluentAssertions;
 using Newtonsoft.Json;
@@ -63,7 +64,7 @@ namespace TEST.Domain.User.Test
         {
             if (userObject != null && !userObject.Image)
             {
-                var userDomain = UserDomainBuilder.New(_faker).WithImage(_faker.Random.String2(8, 14)).Build();
+                var userDomain = UserDomainBuilder.New(_faker).WithImage(_faker.Random.Bytes(10)).Build();
                 var result = new UserDomainValidation().Validate(userDomain);
                 result.IsValid.Should().BeFalse();
             }

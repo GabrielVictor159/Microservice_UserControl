@@ -14,7 +14,8 @@ namespace TEST.Infraestructure.Builder
         public String Name { get; private set; } = "";
         public String Password { get; private set; } = "";
         public String? Description { get; private set; }
-        public String? Image { get; private set; }
+        public String? ImageName { get; set; }
+        public Byte[]? ImageBlob { get; set; }
         public DateTime? DateOfBirth { get; private set; }
         public Boolean? OnlineStatus { get; private set; }
         public String Role { get; private set; } = "";
@@ -52,9 +53,14 @@ namespace TEST.Infraestructure.Builder
             return this;
         }
 
-        public UserBuilder WithImage(String image)
+        public UserBuilder WithImageName(String image)
         {
-            Image = image;
+            ImageName = image;
+            return this;
+        }
+        public UserBuilder WithImageBlob(Byte[] image)
+        {
+            ImageBlob = image;
             return this;
         }
 
@@ -77,7 +83,8 @@ namespace TEST.Infraestructure.Builder
             Name = Name,
             Password = Password,
             Description = Description,
-            Image = Image,
+            ImageName = ImageName,
+            ImageBlob = ImageBlob,
             DateOfBirth = DateOfBirth,
             OnlineStatus = OnlineStatus,
             Role = Role

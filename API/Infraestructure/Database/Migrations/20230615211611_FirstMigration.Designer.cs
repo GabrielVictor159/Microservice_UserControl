@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace API.Infraestructure.Database.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230613140906_ThirdMigration")]
-    partial class ThirdMigration
+    [Migration("20230615211611_FirstMigration")]
+    partial class FirstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace API.Infraestructure.Database.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("API.Infraestructure.Database.Entities.User", b =>
+            modelBuilder.Entity("API.Infraestructure.Database.Entities.Users", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,10 @@ namespace API.Infraestructure.Database.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<string>("Image")
+                    b.Property<byte[]>("ImageBlob")
+                        .HasColumnType("bytea");
+
+                    b.Property<string>("ImageName")
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
@@ -48,6 +51,10 @@ namespace API.Infraestructure.Database.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("text");
 

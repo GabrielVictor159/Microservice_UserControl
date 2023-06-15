@@ -15,7 +15,7 @@ namespace TEST.Domain.User.Builder
         public String Name { get; private set; } = "";
         public String Password { get; private set; } = "";
         public String? Description { get; private set; }
-        public String? Image { get; private set; }
+        public Byte[]? Image { get; private set; }
         public DateTime? DateOfBirth { get; private set; }
         public Boolean? OnlineStatus { get; private set; }
         public String Role { get; private set; } = "";
@@ -41,7 +41,7 @@ namespace TEST.Domain.User.Builder
                 }
                 if (userObject.Image)
                 {
-                    userDomainBuilder.Image = faker.Random.String2(8);
+                    userDomainBuilder.Image = faker.Random.Bytes(10);
                 }
                 if (userObject.DateOfBirth)
                 {
@@ -79,7 +79,7 @@ namespace TEST.Domain.User.Builder
             return this;
         }
 
-        public UserDomainBuilder WithImage(String image)
+        public UserDomainBuilder WithImage(Byte[] image)
         {
             Image = image;
             return this;

@@ -23,9 +23,11 @@ namespace API.Infraestructure.Database.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Password = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    Image = table.Column<string>(type: "text", nullable: true),
-                    dateOfBirth = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    onlineStatus = table.Column<bool>(type: "boolean", nullable: true)
+                    ImageName = table.Column<string>(type: "text", nullable: true),
+                    ImageBlob = table.Column<byte[]>(type: "bytea", nullable: true),
+                    DateOfBirth = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    OnlineStatus = table.Column<bool>(type: "boolean", nullable: true),
+                    Role = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

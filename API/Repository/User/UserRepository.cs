@@ -57,11 +57,6 @@ namespace API.Repository.User
                     query = query.Where(u => u.Description != null && u.Description.ToLower().Contains(searchUser.Description.ToLower()));
                 }
 
-                if (!string.IsNullOrEmpty(searchUser.Image))
-                {
-                    query = query.Where(u => u.Image != null && u.Image.ToLower().Contains(searchUser.Image.ToLower()));
-                }
-
                 if (searchUser.DateOfBirth.HasValue)
                 {
                     query = query.Where(u => u.DateOfBirth != null && u.DateOfBirth.Value.Date == searchUser.DateOfBirth.Value.Date);

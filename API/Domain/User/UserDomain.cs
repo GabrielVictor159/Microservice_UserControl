@@ -18,7 +18,7 @@ namespace API.Domain.User
             set { PasswordLength = value.Length; _Password = Cryptography.md5Hash(value); }
         }
         public String? Description { get; set; }
-        public String? Image { get; set; }
+        public Byte[]? Image { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public Boolean? OnlineStatus { get; set; } = false;
         public String Role { get; set; } = "";

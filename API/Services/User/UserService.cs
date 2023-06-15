@@ -6,6 +6,7 @@ using API.Controllers.User.DTO;
 using API.Domain.User;
 using API.Infraestructure.Database.Entities;
 using API.Repository.User;
+using API.Services.Token;
 using AutoMapper;
 
 namespace API.Services.User
@@ -14,10 +15,12 @@ namespace API.Services.User
     {
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
-        public UserService(IMapper mapper, IUserRepository userRepository)
+        private readonly ITokenService _tokenService;
+        public UserService(IMapper mapper, IUserRepository userRepository, ITokenService tokenService)
         {
             _mapper = mapper;
             _userRepository = userRepository;
+            _tokenService = tokenService;
         }
         public async Task<Object> RegisterUser(UserDomain domain)
         {
@@ -43,8 +46,7 @@ namespace API.Services.User
             {
                 return null;
             }
-            // Gerar, armazenar e retornar o token 
-            return "Sucesso";
+            return _tokenService.GenerateToken(login);
         }
         public async Task<Object> GetPaginated(GetPaginationDTO dto)
         {
