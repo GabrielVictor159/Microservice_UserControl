@@ -5,6 +5,7 @@ services:
     environment:
       DBCONN: "Server=db_usercontrol;Port=5432;Database=postgres;User Id=postgres;Password=postgres"
       USER: "{ Name: 8, Password: 8, Description: true, Image: true, DateOfBirth: true, OnlineStatus: true}"
+      messagesHostname: "rabbitmq"
     build:
       context: .
       dockerfile: Dockerfile
@@ -27,6 +28,16 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
+
+  rabbitmq:
+    image: rabbitmq:management
+    restart: unless-stopped
+    ports:
+      - "5673:5672"
+      - "15672:15672"
+    networks:
+      - usercontrol
+      
 networks:
   usercontrol:
     driver: bridge

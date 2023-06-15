@@ -10,7 +10,8 @@
 				"ckolkman.vscode-postgres",
 				"ms-dotnettools.csharp",
 				"kreativ-software.csharpextensions",
-				"rangav.vscode-thunder-client"
+				"rangav.vscode-thunder-client",
+				"patcx.vscode-nuget-gallery"
 			]
 		}
 	},
